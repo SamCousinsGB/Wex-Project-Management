@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>In_Progress_Projects</fullName>
+    <columns>NAME</columns>
+    <columns>Total_Number_of_Milestones__c</columns>
+    <columns>Total_Number_of_Completed_Milestones__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>In Progress</value>
+    </filters>
+    <label>#3 - In Progress Projects</label>
+</ListView>

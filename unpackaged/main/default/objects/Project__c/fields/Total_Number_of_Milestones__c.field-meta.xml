@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Number_of_Milestones__c</fullName>
+    <description>Summarise the total number of milestones related to this Project.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Summarised count of the total number of milestones related to this Project.</inlineHelpText>
+    <label>Total Number of Milestones</label>
+    <summaryForeignKey>Milestone__c.Project__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

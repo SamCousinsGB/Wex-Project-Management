@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>If this permission is assigned to a user, then bypass automation.</description>
+    <isLicensed>false</isLicensed>
+    <label>Bypass Flows</label>
+</CustomPermission>
