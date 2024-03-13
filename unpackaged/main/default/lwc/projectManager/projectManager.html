@@ -1,10 +1,21 @@
 <template>
-    <lightning-card title="Project Manager" icon-name="standard:service_appointment">
-        <div class="slds-m-around_medium">
+    <lightning-card title="WEX Project Manager" icon-name="custom:custom64">
+        <div class="slds-m-around_medium position-relative">
             <lightning-button label="New Project" onclick={navigateToNewProject} variant="brand" class="slds-m-bottom_medium"></lightning-button>
+            <template if:true={isLoading}>
+                <div>
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
             <template if:true={treeData}>
                 <div class="slds-m-around_medium">
-                    <lightning-tree-grid columns={columns} data={treeData} key-field="name"></lightning-tree-grid>
+                    <lightning-tree-grid 
+                        columns={columns} 
+                        data={treeData} 
+                        key-field="name" 
+                        hide-checkbox-column="true" 
+                        onrowaction={handleRowAction}>
+                    </lightning-tree-grid>
                 </div>
             </template>
             <template if:false={treeData}>
