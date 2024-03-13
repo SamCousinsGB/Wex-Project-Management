@@ -7,7 +7,7 @@
     <label>Project</label>
     <referenceTo>Project__c</referenceTo>
     <relationshipLabel>Project Milestones</relationshipLabel>
-    <relationshipName>Project_Milestones</relationshipName>
+    <relationshipName>Milestones</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackHistory>false</trackHistory>
