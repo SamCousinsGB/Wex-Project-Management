@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Project Manager" icon-name="standard:service_appointment">
+        <div class="slds-m-around_medium">
+            <lightning-button label="New Project" onclick={navigateToNewProject} variant="brand" class="slds-m-bottom_medium"></lightning-button>
+            <template if:true={treeData}>
+                <div class="slds-m-around_medium">
+                    <lightning-tree-grid columns={columns} data={treeData} key-field="name"></lightning-tree-grid>
+                </div>
+            </template>
+            <template if:false={treeData}>
+                <p>No projects found.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
