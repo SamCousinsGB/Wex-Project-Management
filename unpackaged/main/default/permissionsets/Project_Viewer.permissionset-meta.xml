@@ -4,7 +4,12 @@
         <application>WEX_Projects</application>
         <visible>true</visible>
     </applicationVisibilities>
-    <description>A permission set for the management of WEX Projects.</description>
+    <description>A permission set for the view permission of WEX Projects.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Issue__c.Description__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Issue__c.Due_Date__c</field>
@@ -41,7 +46,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
+        <editable>false</editable>
         <field>Project__c.Expected_Due_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -66,7 +71,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>Project Manager</label>
+    <label>Project Viewer</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>

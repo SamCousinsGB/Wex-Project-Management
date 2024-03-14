@@ -147,7 +147,7 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>Default</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>WEX Project Object.
 
@@ -169,7 +169,7 @@ Holds top level project informaton.</description>
         <type>Text</type>
     </nameField>
     <pluralLabel>Projects</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
