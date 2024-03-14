@@ -31,7 +31,7 @@ To use this app, follow these steps:
 #### 3. Navigate to the "Wex Projects" Lightning Application
 ![Lightning App](images/app.png)<br><br>
 
-#### 4. Create projects, milestones, and issues.
+## Application Usage
 
 The home tab contains the Project Manager LWC.
 1. Click the blue button "Create Project" to create a new project.
