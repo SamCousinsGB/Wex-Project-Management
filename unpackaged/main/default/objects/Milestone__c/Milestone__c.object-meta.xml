@@ -169,7 +169,7 @@ Used to track project milestones.</description>
         <type>Text</type>
     </nameField>
     <pluralLabel>Milestones</pluralLabel>
-    <searchLayouts />
+    <searchLayouts></searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
