@@ -9,6 +9,7 @@ import deleteProject from '@salesforce/apex/ProjectManagerController.deleteProje
 import updateIssueStatus from '@salesforce/apex/ProjectManagerController.updateIssueStatus';
 
 export default class ProjectManager extends NavigationMixin(LightningElement) {
+    // Define the data structure for displaying lightning-tree-grid columns
     @track columns = [
         {
             type: 'text',
@@ -31,8 +32,16 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
         },
         { type: 'text', fieldName: 'status', label: 'Status'},
         { type: 'text', fieldName: 'percentageComplete', label: '% Complete', cellAttributes: { alignment: 'left' } },
-        { type: 'date', fieldName: 'dueDate', label: 'Due Date'},
-        { type: 'text', fieldName: 'owner', label: 'Owner', initialWidth: 300},
+        { type: 'date', fieldName: 'expectedDueDate', label: 'Expected Due Date', initialWidth: 300},
+        {
+            type: 'date',
+            fieldName: 'dueDate',
+            label: 'Due Date',
+            cellAttributes: {
+                iconName: { fieldName: 'dueDateStyle' },
+                iconPosition: 'left'
+            }
+        },
         {
             type: 'action',
             typeAttributes: {
@@ -47,10 +56,12 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
     @track treeData;
     wiredProjectsResponse;
 
+    // Lifecycle hook to initiate data loading on component load
     connectedCallback() {
         this.refreshData();
     }
 
+    // Wire service to call Apex method and fetch project data
     @wire(getProjectData)
     wiredProjects(result) {
         this.wiredProjectsResponse = result; // Store the entire response
@@ -64,15 +75,29 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
         }
     }   
 
+    // Processes response data from the apex controller into a format suitable lightning-tree-grid
     processTreeData(data) {
+        // Iterates over each project to modify its structure for compatibility with lightning-tree-grid.
+        // The structure needs modification to include a record URL for navigation and potentially remove
+        // unnecessary child arrays if they are empty.
         return data.map(project => {
+            // Constructs a URL for each project record. This URL enables navigation to the project's detail page
+            // directly from the lightning-tree-grid component.
             project.recordUrl = this.constructRecordUrl(project.name, 'Project__c');
+
+            // Checks if the project has associated milestones (_children). If it does, each milestone is processed similarly.
             if (project._children && project._children.length > 0) {
                 project._children = project._children.map(milestone => {
+                    // Constructs a URL for each milestone, enabling direct navigation from the name column.
                     milestone.recordUrl = this.constructRecordUrl(milestone.name, 'Milestone__c');
+
+                    // If a milestone does not have associated issues (_children), the empty _children array is deleted
+                    // to ensures the tree grid does not display expandable icons for
+                    // milestones without issues.
                     if (!milestone._children || milestone._children.length === 0) {
                         delete milestone._children;
                     } else {
+                        // For milestones with issues, each issue is processed to include a navigation URL.
                         milestone._children = milestone._children.map(issue => {
                             return {
                                 ...issue,
@@ -83,16 +108,21 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
                     return milestone;
                 });
             } else {
+                // If a project does not have any milestones, the empty _children array is removed. This prevents the
+                // tree grid from showing an expandable icon next to projects that do not have any milestones.
                 delete project._children;
             }
             return project;
         });
     }
 
+
+    // Helper function to construct a URL for navigating to a specific record
     constructRecordUrl(recordId, objectApiName) {
         return `/lightning/r/${objectApiName}/${recordId}/view`;
     }
 
+    // Determines the row actions based on the type of record (Project, Milestone, Issue)
     getRowActions(row, doneCallback) {
         let actions = [];
         if (row.typeLabel === 'Project') {
@@ -119,6 +149,7 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
         doneCallback(actions);
     }
     
+    // Handles actions triggered from the row action
     async handleRowAction(event) {
         const { action: { name: actionName }, row } = event.detail;
         this.isLoading = true;
@@ -126,6 +157,7 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
         try {
             switch (actionName) {
                 case 'create_issue':
+                    console.log(row.name);
                 this[NavigationMixin.Navigate]({
                     type: 'standard__objectPage',
                     attributes: {
@@ -138,6 +170,7 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
                 });
                 break;
                 case 'create_milestone':
+                    console.log(row.name);
                 this[NavigationMixin.Navigate]({
                     type: 'standard__objectPage',
                     attributes: {
@@ -187,6 +220,7 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
         } catch (error) {
             this.showToast('Error', `Failed to execute action: ${error.body.message}`, 'error');
         } finally {
+            // Refreshes data after action completion
             this.refreshData();
             this.isLoading = false;
         }
@@ -201,7 +235,9 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
         this.dispatchEvent(evt);
     }
 
+    // Navigation logic for create project button
     navigateToNewProject() {
+        console.log('called new project');
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
             attributes: {
@@ -211,6 +247,7 @@ export default class ProjectManager extends NavigationMixin(LightningElement) {
         });
     }
 
+    // Refreshes the data by re-calling the Apex method
     refreshData() {
         this.isLoading = true;
         refreshApex(this.wiredProjectsResponse).then(() => {

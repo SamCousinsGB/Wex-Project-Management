@@ -1,10 +1,16 @@
 <template>
     <lightning-card title="WEX Project Manager" icon-name="custom:custom64">
-        <div class="slds-m-around_medium position-relative">
-            <lightning-button label="New Project" onclick={navigateToNewProject} variant="brand" class="slds-m-bottom_medium"></lightning-button>
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_medium">
+                <lightning-button-group>
+                    <lightning-button label="New Project" onclick={navigateToNewProject} variant="brand"></lightning-button>
+                    <lightning-button label="Refresh Data" onclick={refreshData}></lightning-button>
+                </lightning-button-group>
+            </div>
             <template if:true={isLoading}>
-                <div>
+                <div class="slds-m-vertical_medium">
                     <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                    <span>Loading projects...</span>
                 </div>
             </template>
             <template if:true={treeData}>
@@ -19,7 +25,9 @@
                 </div>
             </template>
             <template if:false={treeData}>
-                <p>No projects found.</p>
+                <div class="slds-m-around_medium slds-text-title_caps">
+                    No projects found.
+                </div>
             </template>
         </div>
     </lightning-card>

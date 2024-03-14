@@ -3,7 +3,7 @@ public with sharing class ProjectManagerController {
     @AuraEnabled(cacheable=true)
     public static List<Map<String, Object>> getProjectData() {
         List<Map<String, Object>> treeData = new List<Map<String, Object>>();
-        List<Project__c> projects = [SELECT Id, Name, Status__c, Owner.Name, Percentage_Complete__c, Due_Date__c,
+        List<Project__c> projects = [SELECT Id, Name, Status__c, Owner.Name, Percentage_Complete__c, Due_Date__c, Expected_Due_Date__c,
                                     (SELECT Id, Name, Status__c, Due_Date__c, Percentage_Complete__c FROM Milestones__r ORDER BY Due_Date__c) 
                                     FROM Project__c ORDER BY Due_Date__c];
         
@@ -24,6 +24,14 @@ public with sharing class ProjectManagerController {
         }
         
         for (Project__c project : projects) {
+            String dueDateStyle;
+            // Check if due date is greater than or equal to expected due date
+            if (project.Due_Date__c != null && project.Expected_Due_Date__c != null && project.Due_Date__c <= project.Expected_Due_Date__c) {
+                dueDateStyle = 'utility:smiley_and_people'; // Tick icon for on or after expected date
+            } else {
+                dueDateStyle = 'utility:warning'; // Another icon for before expected date
+            }
+            
             Map<String, Object> projectNode = new Map<String, Object>{
                 'name' => project.Id,
                 'label' => project.Name,
@@ -32,6 +40,8 @@ public with sharing class ProjectManagerController {
                 'typeLabel' => 'Project',
                 'percentageComplete' => String.valueOf(project.Percentage_Complete__c) + '%',
                 'dueDate' => project.Due_Date__c,
+                'expectedDueDate' => project.Expected_Due_Date__c,
+                'dueDateStyle' => dueDateStyle,
                 'owner' => project.Owner.Name,
                 '_children' => new List<Map<String, Object>>()
             };
