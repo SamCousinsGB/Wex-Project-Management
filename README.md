@@ -5,10 +5,10 @@ This Lightning Web Component is designed for Salesforce to help manage projects,
 
 ## Features
 - Create Projects, Milestones, and Issues.
-- Track completion percentagage across all your projects.
-- Easily manage issues in an easy to use interface.
+- Track completion percentage across all your projects.
+- Easily manage issues in an easy-to-use interface.
 
-## Screenshot
+## Screenshots
 
 ### Application Home
 ![LWC Home Page](images/Intro.png)
@@ -31,33 +31,42 @@ To use this app, follow these steps:
 #### 3. Navigate to the "Wex Projects" Lightning Application
 ![Lightning App](images/app.png)
 
-#### 4. Create projects, milestones and issues.
+#### 4. Create projects, milestones, and issues.
 
 The home tab contains the Project Manager LWC.
-    1. Click the blue button "Create Project" to create a new project.
-    ![Lightning App](images/newproject.png)
-    2. Enter a Project Name in the Modal that appears and click Save.
-    ![Lightning App](images/newprojectmodal.png)
-    3. You will then be directed to the new project record. You can create milestones here, but that's no fun! 
-    ![Lightning App](images/newprojectrecord.png)
-    4. Navigate back to the "Home" tab, and click the action dropdown next to our newly created project.
-    ![Lightning App](images/newprojectmilestonelwc.png)
-    5. This will launch the new Milestone modal. Enter all relevant information here and click save.
-    ![Lightning App](images/newmilestonemodal.png)
-    6. You will be directed to the new milestone record. Navigate back to the home tab and expand the new project, and find the milestone we just created.
-    7. Click on the action dropdown next to the milestone and click "Create Issue"
-    ![Lightning App](images/newprojectissuelwc.png)
-    8. This will, you guessed it, open the New Issue modal. Fill in all fields and click Save.
-    ![Lightning App](images/newissuemodal.png)
-    9. Navigate back to the home tab, and click on the action button next to our newly created issue. You'll be able to change the issue's progress as you wish.
-    ![Lightning App](images/updateissue.png)
-    10. Issues roll up to the parent milestone status. Milestone completion rolls up to the project status. When all issues and milestones are complete, the project will complete!
-    ![Lightning App](images/projectrollup.png)
-    11. Congratulations! You're ready to tackle some projects.
+1. Click the blue button "Create Project" to create a new project.
+![Create Project](images/newproject.png)
+<br>
+2. Enter a Project Name in the Modal that appears and click Save.
+![Project Modal](images/newprojectmodal.png)
+<br>
+3. You will then be directed to the new project record. You can create milestones here, but that's no fun!
+![New Project Record](images/newprojectrecord.png)
+<br>
+4. Navigate back to the "Home" tab, and click the action dropdown next to our newly created project.
+![New Project Milestone LWC](images/newprojectmilestonelwc.png)
+<br>
+5. This will launch the new Milestone modal. Enter all relevant information here and click save.
+![New Milestone Modal](images/newmilestonemodal.png)
+<br>
+6. You will be directed to the new milestone record. Navigate back to the home tab and expand the new project, and find the milestone we just created.
+<br>
+7. Click on the action dropdown next to the milestone and click "Create Issue"
+![New Project Issue LWC](images/newprojectissuelwc.png)
+<br>
+8. This will, you guessed it, open the New Issue modal. Fill in all fields and click Save.
+![New Issue Modal](images/newissuemodal.png)
+<br>
+9. Navigate back to the home tab, and click on the action button next to our newly created issue. You'll be able to change the issue's progress as you wish.
+![Update Issue](images/updateissue.png)
+<br>
+10. Issues roll up to the parent milestone status. Milestone completion rolls up to the project status. When all issues and milestones are complete, the project will complete!
+![Project Rollup](images/projectrollup.png)
+<br>
+11. Congratulations! You're ready to tackle some projects.
 
-### Adding the Component to a new Page
+### Adding the Component to a New Page
 1. Navigate to the Lightning App Builder.
 2. Select the page you wish to add the Project Manager LWC to or create a new one.
 3. Drag the Project Manager LWC from the list of available components to your desired location on the page.
 4. Save and activate the page.
-
