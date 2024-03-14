@@ -2,10 +2,17 @@
   "packageDirectories": [
     {
       "path": "unpackaged",
-      "default": true
+      "default": true,
+      "package": "Wex Project Manager",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": ""
     }
   ],
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "59.0"
+  "sourceApiVersion": "59.0",
+  "packageAliases": {
+    "Wex Project Manager": "0HoQy00000009jFKAQ"
+  }
 }
