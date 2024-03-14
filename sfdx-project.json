@@ -13,6 +13,7 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "59.0",
   "packageAliases": {
-    "Wex Project Manager": "0HoQy00000009jFKAQ"
+    "Wex Project Manager": "0HoQy00000009jFKAQ",
+    "Wex Project Manager@0.1.0-1": "04tQy0000000niHIAQ"
   }
 }
