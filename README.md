@@ -7,6 +7,7 @@ This Lightning Web Component is designed for Salesforce to help manage projects,
 - Create Projects, Milestones, and Issues.
 - Track completion percentage across all your projects.
 - Easily manage issues in an easy-to-use interface.
+- View when a project is overdue based on the expected due date vs actual due date.
 
 ## Screenshots
 
@@ -22,7 +23,7 @@ This Lightning Web Component is designed for Salesforce to help manage projects,
 ## Installation Guide
 To use this app, follow these steps:
 #### 1. Install unlocked package:
-[Package Install Link (Sandbox Only)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQy0000000niHIAQ)<br><br>
+[Package Install Link (Sandbox Only)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tQy0000000pQjIAI)<br><br>
 
 #### 2. Setup Permissions
 - **Project Manager Permission Set**: Assign this permission set to users who need full access to create, modify, and delete projects, milestones, and issues.
