@@ -11,7 +11,7 @@
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
-        <groupingColumn>Project__c.Milestones__r$Name</groupingColumn>
+        <groupingColumn>Project__c.Milestones__r$Status__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
@@ -22,7 +22,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Completed. Vs Remaining Milestones</title>
+        <title>Issues By Status</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -30,28 +30,14 @@
         <field>Project__c.Milestones__r.Issues__r$Name</field>
     </columns>
     <columns>
-        <field>Project__c.Milestones__r$Status__c</field>
-    </columns>
-    <columns>
         <field>Project__c.Milestones__r.Issues__r$Due_Date__c</field>
     </columns>
-    <filter>
-        <criteriaItems>
-            <column>Project__c$Id</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>a00Qy000009RQ91</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Project__c.Milestones__r$Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Complete</value>
-        </criteriaItems>
-    </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Project__c.Milestones__r$Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Project__c.Milestones__r$Name</field>
